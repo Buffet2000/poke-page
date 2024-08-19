@@ -1,5 +1,5 @@
 <script>
-  import "../app.css";
+  import "../app.pcss";
   import { goto } from "$app/navigation";
 </script>
 
@@ -11,7 +11,7 @@
       <a href="/user" class="btn btn-ghost">PokePage</a>
     </div>
     <div>
-      <button on:click-{() => goto('/login')}></button>
+      <button on:click={() => goto('/login')}></button>
     </div>
   </div>
 </div>
