@@ -27,7 +27,7 @@
     <div>
       <a href="/" class="btn btn-ghost text-xl">PokePage</a>
       {#if session !== null}
-        <a href="/{session.user.email}" class="btn btn-ghost">PokePage</a>
+        <a href="/{session.user.email}" class="btn btn-ghost">MyPage</a>
       {/if}
     </div>
     <div>
