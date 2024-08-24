@@ -15,7 +15,7 @@
     description: 'This is your description, feel free to write about yourself or your favorite Pokemon.',
     pokemon_ids: [1, 2, 3]
   }
-  let isModalOpen = false;
+  let isEditModalOpen = false;
   let searchInput = '';
 
   async function refreshPokemonData() {
@@ -71,7 +71,7 @@
   async function savePageEdits() {
     await saveProfile();
     await refreshPokemonData();
-    isModalOpen = false;
+    isEditModalOpen = false;
   }
 
   async function togglePokemon(id: number) {
@@ -116,17 +116,17 @@
         {/if}
       </div>
       {#if email == session?.user?.email}
-        <button class="btn btn-info mt-5" on:click={() => isModalOpen = true}>Edit Page</button>
-        <dialog class="modal min-w-lg" class:modal-open={isModalOpen}>
+        <button class="btn btn-info mt-5" on:click={() => isEditModalOpen = true}>Edit Page</button>
+        <dialog class="modal min-w-lg" class:modal-open={isEditModalOpen}>
           <div class="modal-box">
-            <h3>Edit Your PokePage</h3>
-            <p>Here you can make edits to your page, such as description or pokemon selected.</p>
+            <button class="btn btn-xs absolute right-2 top-2" on:click={() => isEditModalOpen = false}>X</button>
+            <h3 class="mt-2">Edit Your PokePage</h3>
+            <p class="text-xs text-[#88898a] mt-2">Here you can make edits to your page, such as description or pokemon selected.</p>
             <p class="text-white p-2">Edit your description</p>
             <textarea
               bind:value={profile.description}
               class="textarea textarea-bordered textarea-lg w-full max-w-md h-[300px]"
             />
-            <button class="btn btn-success mt-5" on:click={() => savePageEdits()}>Save Edits</button>
             <p class="text-white p-2">Select your pokemon</p>
             <div class="col-span-3">
               <input
@@ -135,6 +135,7 @@
                 placeholder="Search for a pokemon!"
                 bind:value={searchInput}
               >
+              <button class="btn btn-success mt-5 w-[250px]" on:click={() => savePageEdits()}>Save Edits</button>
             </div>
             <div class="grid grid-cols-3 overflow-y-scroll max-h-[600px] m-3">
               {#each pokemonList as pokemon, index }
