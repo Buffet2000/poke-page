@@ -16,6 +16,8 @@
     pokemon_ids: [1, 2, 3]
   }
   let isEditModalOpen = false;
+  let isPokemonInfoModalOpen = false;
+  let selectedPokemon: any = null;
   let searchInput = '';
 
   async function refreshPokemonData() {
@@ -103,7 +105,9 @@
           <p>Loading...</p>
         {:else}
           {#each pokemonData as pokemon}
-            <div class="card bg-slate-700 m-4 shadow-lg shadow-blue-900">
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <div on:click={() => { selectedPokemon = pokemon, isPokemonInfoModalOpen = true }} class="card bg-slate-700 m-4 shadow-lg shadow-blue-900 hover:bg-slate-600 cursor-pointer">
               <div class="card-body">
                 <div class="text-center">
                   <img src={pokemon.sprites.front_default} alt="Pokemon" class="w-32 h-32 mx-auto" />
@@ -112,6 +116,33 @@
                 </div>
               </div>
             </div>
+            <dialog class="modal min-w-fit" class:modal-open={isPokemonInfoModalOpen}>
+              {#if selectedPokemon}
+                <div class="modal-box flex justify-between">
+                  <button class="btn btn-xs absolute right-2 top-2" on:click={() => isPokemonInfoModalOpen = false}>X</button>
+                  <div class="w-[60%]">
+                    <img src={selectedPokemon.sprites.front_default} alt="Pokemon" class="w-60 h-60 mx-auto my-auto" />
+                  </div>
+                  <div class="ml-3 mr-3 mt-2 w-[40%] border-l-[1px] border-black">
+                    <div class="mt-1 ml-5 text-info text-start">
+                      NAME: <p class="text-white">{selectedPokemon.name}</p>
+                    </div>
+                    <div class="mt-1 ml-5 text-info text-start">
+                      TYPE: <p class="text-white">{selectedPokemon.types[0].type.name}</p>
+                    </div>
+                    <div class="mt-1 ml-5 text-info text-start">
+                      ATTACK: <p class="text-white">{selectedPokemon.stats[1].base_stat}</p>
+                    </div>
+                    <div class="mt-1 ml-5 text-info text-start">
+                      DEFENCE: <p class="text-white">{selectedPokemon.stats[2].base_stat}</p>
+                    </div>
+                    <div class="mt-1 ml-5 text-info text-start">
+                      HEALTH POINTS: <p class="text-white">{selectedPokemon.stats[0].base_stat}</p>
+                    </div>
+                  </div>
+                </div>
+              {/if}
+            </dialog>
           {/each}
         {/if}
       </div>
@@ -135,7 +166,7 @@
                 placeholder="Search for a pokemon!"
                 bind:value={searchInput}
               >
-              <button class="btn btn-success mt-5 w-[250px]" on:click={() => savePageEdits()}>Save Edits</button>
+              <button class="btn btn-success mt-5 w-[200px]" on:click={() => savePageEdits()}>Save Edits</button>
             </div>
             <div class="grid grid-cols-3 overflow-y-scroll max-h-[600px] m-3">
               {#each pokemonList as pokemon, index }
