@@ -126,16 +126,17 @@
               bind:value={profile.description}
               class="textarea textarea-bordered textarea-lg w-full max-w-md h-[300px]"
             />
+            <button class="btn btn-success mt-5" on:click={() => savePageEdits()}>Save Edits</button>
             <p class="text-white p-2">Select your pokemon</p>
+            <div class="col-span-3">
+              <input
+                type="text"
+                class="input input-bordered w-full"
+                placeholder="Search for a pokemon!"
+                bind:value={searchInput}
+              >
+            </div>
             <div class="grid grid-cols-3 overflow-y-scroll max-h-[600px] m-3">
-              <div class="col-span-3">
-                <input
-                  type="text"
-                  class="input input-bordered w-full"
-                  placeholder="Search for a pokemon!"
-                  bind:value={searchInput}
-                >
-              </div>
               {#each pokemonList as pokemon, index }
                 {#if pokemon.name.includes(searchInput)}
                   <button
@@ -154,7 +155,6 @@
                 {/if}
               {/each}
             </div>
-            <button class="btn btn-success" on:click={() => savePageEdits()}>Save Edits</button>
           </div>
         </dialog>
       {/if}

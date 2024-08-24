@@ -7,10 +7,8 @@
   let { supabase, session } = data;
   $: ({ supabase, session } = data)
 
-  console.log(supabase)
-  console.log(session)
   $: if(session) {
-    goto("/")
+    goto(`/${data.session?.user.email}`)
   }
 </script>
 
