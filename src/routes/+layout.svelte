@@ -35,7 +35,7 @@
         <button on:click={() => goto('/login')}>Login</button>
       {:else}
         <span class="text-white text-lg ml-2">{session.user.email}</span>
-        <button class="ml-2" on:click={async () => { await supabase.auth.signOut() }}>Logout</button>
+        <button class="ml-5 hover:text-[#00b5ff]" on:click={async () => { await supabase.auth.signOut() }}>Logout</button>
       {/if}
     </div>
   </div>
