@@ -2,6 +2,8 @@ import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from "$env/static/publi
 import { createBrowserClient, isBrowser, parse } from "@supabase/ssr";
 import type { LayoutLoad } from "./$types";
 
+export const prerender = false;
+
 export const ssr = false;
 
 export const load: LayoutLoad = async ({ fetch, data, depends }: any) => {
