@@ -1,6 +1,24 @@
 <script>
-  import "../app.css";
-  import { goto } from "$app/navigation";
+  export let data;
+  import "../app.pcss";
+  import { goto, invalidateAll } from "$app/navigation";
+  import{ Auth } from "@supabase/auth-ui-svelte";
+  import { ThemeSupa } from "@supabase/auth-ui-shared";
+
+  let { supabase, session } = data;
+  $: ({ supabase, session } = data)
+
+  supabase.auth.onAuthStateChange(async (event, session) => {
+    if (event === "SIGNED_IN") {
+      invalidateAll();
+    }
+
+    if (event === "SIGNED_OUT") {
+      await goto('login');
+      invalidateAll();
+    }
+  })
+  
 </script>
 
 <!-- Navbar -->
@@ -8,10 +26,17 @@
   <div class="navbar max-w-3xl mx-auto justify-between">
     <div>
       <a href="/" class="btn btn-ghost text-xl">PokePage</a>
-      <a href="/user" class="btn btn-ghost">PokePage</a>
+      {#if session !== null}
+        <a href="/{session.user.email}" class="btn btn-ghost">MyPage</a>
+      {/if}
     </div>
     <div>
-      <button on:click-{() => goto('/login')}></button>
+      {#if session === null}
+        <button on:click={() => goto('/login')}>Login</button>
+      {:else}
+        <span class="text-white text-lg ml-2">{session.user.email}</span>
+        <button class="ml-5 hover:text-[#00b5ff]" on:click={async () => { await supabase.auth.signOut() }}>Logout</button>
+      {/if}
     </div>
   </div>
 </div>
