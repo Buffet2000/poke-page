@@ -2,30 +2,30 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" href="./favicon.png" />
+		<link rel="icon" href="/poke-page/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
-		<link rel="modulepreload" href="./_app/immutable/entry/start.Cw7OIzxi.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/entry.ChyU9ame.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.Bn0l3NzI.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.CCq6iP81.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.D6kgxu3v.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.CK070yEj.js">
+		<link rel="modulepreload" href="/poke-page/_app/immutable/entry/start.Cw7OIzxi.js">
+		<link rel="modulepreload" href="/poke-page/_app/immutable/chunks/entry.ChyU9ame.js">
+		<link rel="modulepreload" href="/poke-page/_app/immutable/chunks/scheduler.Bn0l3NzI.js">
+		<link rel="modulepreload" href="/poke-page/_app/immutable/entry/app.CCq6iP81.js">
+		<link rel="modulepreload" href="/poke-page/_app/immutable/chunks/preload-helper.D6kgxu3v.js">
+		<link rel="modulepreload" href="/poke-page/_app/immutable/chunks/index.CK070yEj.js">
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">
 			<script>
 				{
 					__sveltekit_1mhevn4 = {
-						base: new URL(".", location).pathname.slice(0, -1),
+						base: "/poke-page",
 						assets: "/poke-page"
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("./_app/immutable/entry/start.Cw7OIzxi.js"),
-						import("./_app/immutable/entry/app.CCq6iP81.js")
+						import("/poke-page/_app/immutable/entry/start.Cw7OIzxi.js"),
+						import("/poke-page/_app/immutable/entry/app.CCq6iP81.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element);
 					});
