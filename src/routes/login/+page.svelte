@@ -3,12 +3,14 @@
   import{ Auth } from "@supabase/auth-ui-svelte";
   import { ThemeSupa } from "@supabase/auth-ui-shared";
   import { goto } from "$app/navigation";
+  
+  const base = process.env.NODE_ENV === 'production' ? '/poke-page' : '';
 
   let { supabase, session } = data;
   $: ({ supabase, session } = data)
 
   $: if(session) {
-    goto(`/${data.session?.user.email}`)
+    goto(`${base}/${data.session?.user.email}`)
   }
 </script>
 
