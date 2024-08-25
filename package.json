@@ -6,7 +6,7 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"prepare-docs": "mkdir -p docs && cp -R build/* docs/ && touch docs/.nojekyll",
-		"deploy": "npm run build && npm run prepare-docs && npx gh-pages -d docs -b gh-pages",
+  	"deploy": "npm run build && npm run prepare-docs && npx gh-pages -d docs -b gh-pages",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
