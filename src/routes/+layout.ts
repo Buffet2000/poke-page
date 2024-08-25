@@ -2,7 +2,7 @@ import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from "$env/static/publi
 import { createBrowserClient, isBrowser, parse } from "@supabase/ssr";
 import type { LayoutLoad } from "./$types";
 
-export const prerender = false;
+export const prerender = true;
 
 export const ssr = false;
 
