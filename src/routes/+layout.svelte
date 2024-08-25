@@ -14,7 +14,7 @@
     }
 
     if (event === "SIGNED_OUT") {
-      await goto(`${base}login`);
+      await goto(`${base}/login`);
       invalidateAll();
     }
   })
