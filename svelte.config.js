@@ -7,7 +7,7 @@ const config = {
 
   kit: {
     adapter: adapter({
-      fallback: 'index.html'
+      fallback: '404.html'
     }),
     paths: {
       base: process.env.NODE_ENV === 'production' ? '/poke-page' : ''
