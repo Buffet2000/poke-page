@@ -15,7 +15,7 @@
 </script>
 
 <div class="hero min-h-screen bg-base-300">
-  <div class="hero-content w-[800px]">
+  <div class="hero-content max-sm:w-[300px]">
     <div class="flex flex-col">
       <p>Create an account or login below!</p>
       <!-- Supabase Auth UI -->
@@ -25,7 +25,7 @@
         appearance={{
           theme: ThemeSupa,
           style: {
-            input: "width: 400px"
+            input: "width: 340px"
           }
         }}
       />
