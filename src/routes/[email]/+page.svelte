@@ -97,10 +97,10 @@
 
 <div class="hero min-h-screen bg-base-300">
   <div class="hero-content">
-    <div class="max-w-2xl text-center">
-      <h1 class="text-white font-bold text-4xl">{email}'s Page</h1>
+    <div class="max-w-2xl text-center pt-20">
+      <h1 class="text-white font-bold sm:text-3xl max-sm:text-2xl">{email}'s Page</h1>
       <p class="py-3 max-w-md mx-auto">{profile.description}</p>
-      <div class="grid grid-cols-3">
+      <div class="grid grid-cols-3 max-sm:grid-cols-1">
         {#if pokemonData === undefined}
           <p>Loading...</p>
         {:else}
@@ -148,7 +148,7 @@
       </div>
       {#if email == session?.user?.email}
         <button class="btn btn-info mt-5" on:click={() => isEditModalOpen = true}>Edit Page</button>
-        <dialog class="modal min-w-lg" class:modal-open={isEditModalOpen}>
+        <dialog class="modal min-w-lg max-sm:mt-10" class:modal-open={isEditModalOpen}>
           <div class="modal-box">
             <button class="btn btn-xs absolute right-2 top-2" on:click={() => isEditModalOpen = false}>X</button>
             <h3 class="mt-2">Edit Your PokePage</h3>
@@ -181,7 +181,7 @@
                     on:click={() => togglePokemon(index + 1)}
                   > 
                     <div class="text-center">
-                      <h2 class="text-white text-xl">{pokemon.name}</h2>
+                      <h2 class="text-white text-xl max-sm:text-sm">{pokemon.name}</h2>
                     </div>
                   </button>
                 {/if}

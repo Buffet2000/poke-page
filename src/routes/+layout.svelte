@@ -22,19 +22,19 @@
 </script>
 
 <!-- Navbar -->
-<div class="bg-base-100 justify-between fixed top-0 left-0 right-0">
-  <div class="navbar max-w-3xl mx-auto justify-between">
+<div class="bg-base-100 justify-between fixed top-0 left-0 right-0 z-10">
+  <div class="navbar max-w-3xl mx-auto justify-between max-sm:justify-around">
     <div>
-      <a href="{base}/" class="btn btn-ghost text-xl">PokePage</a>
+      <a href="{base}/" class="btn btn-ghost text-xl max-sm:text-sm">PokePage</a>
       {#if session !== null}
         <a href="{base}/{session.user.email}" class="btn btn-ghost">MyPage</a>
       {/if}
     </div>
     <div>
       {#if session === null}
-        <button on:click={() => goto(`${base}/login`)}>Login</button>
+        <button class="max-[800]: mr-3" on:click={() => goto(`${base}/login`)}>Login</button>
       {:else}
-        <span class="text-white text-lg ml-2">{session.user.email}</span>
+        <span class="text-white text-lg ml-2 max-sm:hidden">{session.user.email}</span>
         <button class="ml-5 hover:text-[#00b5ff]" on:click={async () => { await supabase.auth.signOut() }}>Logout</button>
       {/if}
     </div>
